@@ -108,6 +108,7 @@ def play_game(board):
                     
                 
 def menu():
+    # Prompt the user to ask what to do
     print("Enter one of the following options : ")
     print("1 - Play the game\n2 - Save your score in the leaderboard\n3 - Load and display the leaderboard\nq - End the program")
     choice = input("1, 2, 3 or q? : ")
@@ -117,14 +118,13 @@ def menu():
     return choice
 
 def load_scores():
-    import json
-
-def load_scores():
+    # Function to load the scores from the leaderboard file
     with open('leaderboard.txt', 'r') as file:
-        leaders = json.load(file)
-    return leaders
-    
+        leaders = json.load(file)  # Load the scores from the file using JSON
+    return leaders  # Return the loaded scores as a dictionary
+
 def save_score(score):
+    #function to save the current score of the player
     name = input("Enter your name : ")
     with open('leaderboard.txt', 'r') as file:
         leaders = json.load(file)
@@ -136,6 +136,7 @@ def save_score(score):
 
 
 def display_leaderboard(leaders):
+    # function to display the leaderboard 
     sorted_leaders = sorted(leaders.items(), key=lambda x: x[1], reverse=True)
     print("Leaderboard:")
     for name, score in sorted_leaders:
